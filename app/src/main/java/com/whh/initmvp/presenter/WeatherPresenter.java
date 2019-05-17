@@ -1,13 +1,14 @@
-package com.whh.initmvp.Presenter;
+package com.whh.initmvp.presenter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.whh.initmvp.Model.AppVersionModel;
+import com.whh.initmvp.common.ContantUtils;
 import com.whh.initmvp.manager.DataManager;
-import com.whh.initmvp.view.AppVersionView;
+import com.whh.initmvp.model.Weather;
 import com.whh.initmvp.view.View;
+import com.whh.initmvp.view.WeatherView;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -18,43 +19,39 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by wuhuihui on 2019/5/17.
- * AppVersionPresenter 处理AppVersion返回的数据，与View交互
+ * WeatherPresenter 处理Weather返回的数据，与View交互
  */
 
-public class AppVersionPresenter implements Presenter {
+public class WeatherPresenter implements Presenter {
 
-    private final static String TAG = "AppVersionPresenter";
+    private final static String TAG = "WeatherPresenter";
 
+    private Context context;
     private DataManager manager;
     private CompositeDisposable compositeDisposable;
-    private Context context;
-    private AppVersionView appVersionView;
-    private AppVersionModel appVersion;
+    private WeatherView weatherView;
+    private Weather weather;
 
-    public AppVersionPresenter(Context context) {
+    public WeatherPresenter(Context context) {
         this.context = context;
     }
 
 
     @Override
     public void onCreate() {
-        manager = new DataManager(context);
-        compositeDisposable = new CompositeDisposable();
+        manager = new DataManager(context); //参数1标识为当前是请求天气信息数据
+        compositeDisposable = ContantUtils.compositeDisposable;
         //RxJava1: mCompositeSubscription = new CompositeSubscription();
     }
 
     @Override
     public void onStart() {
-
     }
 
     @Override
     public void onDestory() {
         if (compositeDisposable != null && !compositeDisposable.isDisposed()) {
             compositeDisposable.dispose(); //解除订阅
-            compositeDisposable.clear(); //取消所有订阅
-            compositeDisposable = null;
-
             //RxJava1:CompositeSubscription.unsubscribe();
         }
     }
@@ -66,7 +63,7 @@ public class AppVersionPresenter implements Presenter {
 
     @Override
     public void attachView(View view) {
-        appVersionView = (AppVersionView) view;
+        weatherView = (WeatherView) view;
     }
 
     @Override
@@ -74,34 +71,34 @@ public class AppVersionPresenter implements Presenter {
 
     }
 
-    public void getAppVersion(String currentVersion, String type) {
-        Observable<AppVersionModel> observable = manager.getAppVersion(currentVersion, type);
+    public void getWeather() {
+        Observable<Weather> observable = manager.getWeather();
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<AppVersionModel>() {
+                .subscribe(new Observer<Weather>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         compositeDisposable.add(d);
                     }
 
                     @Override
-                    public void onNext(AppVersionModel value) {
-                        appVersion = value;
+                    public void onNext(Weather value) {
+                        weather = value;
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
                         Log.i(TAG, "onError:" + e.toString());
-                        appVersionView.onError("请求失败:\n" + e.toString());
+                        weatherView.onError("请求失败:\n" + e.toString());
                     }
 
                     @Override
                     public void onComplete() {
                         Log.i(TAG, "onComplete!");
-                        if (appVersionView != null) {
-                            appVersionView.onSuccess(appVersion);
-                            Log.i(TAG, "appVersion:" + appVersion.toString());
+                        if (weatherView != null) {
+                            weatherView.onSuccess(weather);
+                            Log.i(TAG, "weather:" + weather.toString());
                         }
                     }
                 });

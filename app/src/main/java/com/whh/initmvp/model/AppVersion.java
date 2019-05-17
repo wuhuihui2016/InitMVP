@@ -1,16 +1,17 @@
-package com.whh.initmvp.Model;
+package com.whh.initmvp.model;
 
 import java.util.List;
 
 /**
  * Created by wuhuihuhi on 2019/5/16.
- * AppVersionModel 满足Gson解析的数据结构
+ * AppVersion 满足Gson解析的数据结构
  */
 
-public class AppVersionModel {
+public class AppVersion {
 
     /**
      * http://ios.mobile.che-by.com/appversion-getAppVersion?currentVersion=6.0.2&type=android
+     *
      * {
      "size": "14MB",
      "functions": ["1.上线新活动\n2.部分页面优化更新\n3.修复已知BUG"],
@@ -26,7 +27,8 @@ public class AppVersionModel {
     private int must;
     private String url;
 
-    public AppVersionModel(String size, List<String>  functions, String latestVersion, int must, String url) {
+    public AppVersion(String size, List<String>  functions,
+                      String latestVersion, int must, String url) {
         this.size = size;
         this.functions = functions;
         this.latestVersion = latestVersion;
@@ -76,7 +78,7 @@ public class AppVersionModel {
 
     @Override
     public String toString() {
-        return "AppVersionModel{" +
+        return "AppVersion{" +
                 "size='" + size + '\'' +
                 ", functions=" + functions +
                 ", latestVersion='" + latestVersion + '\'' +

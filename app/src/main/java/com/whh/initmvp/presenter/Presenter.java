@@ -1,4 +1,4 @@
-package com.whh.initmvp.Presenter;
+package com.whh.initmvp.presenter;
 
 import android.content.Intent;
 
@@ -11,6 +11,7 @@ import com.whh.initmvp.view.View;
  */
 
 public interface Presenter {
+
     void onCreate();
 
     void onStart();
@@ -23,3 +24,7 @@ public interface Presenter {
 
     void attachIncomingIntent(Intent intent);
 }
+
+
+
+

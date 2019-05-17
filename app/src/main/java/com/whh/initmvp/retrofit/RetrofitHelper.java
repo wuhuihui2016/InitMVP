@@ -1,8 +1,10 @@
 package com.whh.initmvp.retrofit;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.GsonBuilder;
+import com.whh.initmvp.common.ContantUtils;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -10,10 +12,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by wuhuihui on 2019/5/17.
- * RetrofitHelper：初始化Retrofit，设置请求API的baseUrl、gson解析方式、
+ * RetrofitHelper：初始化Retrofit，设置请求API的baseUrl、gson解析方式
  */
 
 public class RetrofitHelper {
+    private final String TAG = "RetrofitHelper";
     private Context context;
 
     private static RetrofitHelper instance = null;
@@ -22,6 +25,7 @@ public class RetrofitHelper {
     private RetrofitHelper(Context context) {
         this.context = context;
         initRetrofit();
+//        initWeatherRetrofit();
     }
 
     public static RetrofitHelper getInstance(Context context) {
@@ -30,15 +34,29 @@ public class RetrofitHelper {
     }
 
     private void initRetrofit() {
+        Log.i(TAG, ContantUtils.APPVERSION_BASE_URL);
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://ios.mobile.che-by.com/")
+                .baseUrl(ContantUtils.APPVERSION_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(
                         new GsonBuilder().create()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
-    public RetrofitService getServer(){
+    /**
+     * 访问天气的网络请求
+     */
+    private void initWeatherRetrofit() {
+        Log.i(TAG, ContantUtils.WEATHER_BASE_URL);
+        retrofit = new Retrofit.Builder()
+                .baseUrl(ContantUtils.WEATHER_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(
+                        new GsonBuilder().create()))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+    }
+
+    public RetrofitService getServer() {
         return retrofit.create(RetrofitService.class);
     }
 

@@ -7,15 +7,22 @@
     <Button
         android:id="@+id/requestData"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="20dp"
-        android:background="@android:color/transparent"
-        android:text="请求数据" />
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/holo_red_dark"
+        android:padding="10dp"
+        android:text="请求数据"
+        android:textColor="@android:color/white" />
 
-    <TextView
-        android:id="@+id/showData"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/showData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+    </ScrollView>
 
 </LinearLayout>

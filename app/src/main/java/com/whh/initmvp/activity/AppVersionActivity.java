@@ -1,23 +1,23 @@
-package com.whh.initmvp.Activity;
+package com.whh.initmvp.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.whh.initmvp.Model.AppVersionModel;
-import com.whh.initmvp.Presenter.AppVersionPresenter;
 import com.whh.initmvp.R;
+import com.whh.initmvp.model.AppVersion;
+import com.whh.initmvp.presenter.AppVersionPresenter;
 import com.whh.initmvp.view.AppVersionView;
 
 import java.util.List;
 
 /**
  * Created by wuhuihui on 2019/5/16.
+ * 加载版本信息
  */
 
-public class MainActivity extends Activity{
+public class AppVersionActivity extends BaseActivity{
 
     private TextView showData;
     private Button requestData;
@@ -42,7 +42,7 @@ public class MainActivity extends Activity{
         //刷新UI,显示数据
         appVersionPresenter.attachView(new AppVersionView() {
             @Override
-            public void onSuccess(AppVersionModel appVersion) {
+            public void onSuccess(AppVersion appVersion) {
                 showData.setText(appVersion.getLatestVersion()
                         + "\n" + appVersion.getSize()
                         + "\n" + appVersion.getUrl()
@@ -53,6 +53,8 @@ public class MainActivity extends Activity{
                 for (int i = 0; i < list.size(); i++) {
                     showData.append(list.get(i) + "\n");
                 }
+
+                requestData.setVisibility(View.GONE);
             }
 
             @Override
