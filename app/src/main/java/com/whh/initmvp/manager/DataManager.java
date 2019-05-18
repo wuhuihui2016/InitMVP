@@ -3,6 +3,7 @@ package com.whh.initmvp.manager;
 import android.content.Context;
 
 import com.whh.initmvp.model.AppVersion;
+import com.whh.initmvp.model.GitUser;
 import com.whh.initmvp.model.Weather;
 import com.whh.initmvp.retrofit.RetrofitHelper;
 import com.whh.initmvp.retrofit.RetrofitService;
@@ -39,6 +40,14 @@ public class DataManager {
      */
     public Observable<Weather> getWeather() {
         return retrofitService.getWeather();
+    }
+
+    /**
+     * 获取Weather
+     * @return
+     */
+    public Observable<GitUser> getGitUser() {
+        return retrofitService.getGitUser();
     }
 
 }

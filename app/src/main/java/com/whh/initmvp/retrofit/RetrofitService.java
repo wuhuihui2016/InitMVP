@@ -2,6 +2,7 @@ package com.whh.initmvp.retrofit;
 
 
 import com.whh.initmvp.model.AppVersion;
+import com.whh.initmvp.model.GitUser;
 import com.whh.initmvp.model.Weather;
 
 import io.reactivex.Observable;
@@ -30,4 +31,8 @@ public interface RetrofitService {
     //get请求
     @GET("api/weather/city/101010100")
     Observable<Weather> getWeather();
+
+    //get请求
+    @GET("basil2style")
+    Observable<GitUser> getGitUser();
 }

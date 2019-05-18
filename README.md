@@ -11,3 +11,16 @@ Retrofit：Square公司开发的一款针对Android 网络请求的框架（底�
 RxJava2：一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库），RxJava使异步操作变得非常简单。
 
 HttpLoggingInterceptor：日志拦截器，okHttp记录拦截器，用于记录应用中的网络请求的信息。
+
+三个网络请求例子：
+由于三个请求API的base_url都不同，需要初始化不同的retrofit，初始化方法在调用的切换
+private RetrofitHelper(Context context) {
+        this.context = context;
+//        initRetrofit(); //版本信息
+//        initWeatherRetrofit(); //天气信息
+        initGitUserRetrofit();  //https gitUser信息
+    }
+建立不同Activity，在manifest.xml切换不同的activity为启动页
+1.版本信息：post请求，retrofit初始化方法initRetrofit，activity为AppVersionActivity。目的：框架的初实现
+2.天气信息：get请求，retrofit初始化方法initWeatherRetrofit，activity为WeatherActivity。目的：熟练框架的使用
+3.gitUser信息：get请求，retrofit初始化方法initGitUserRetrofit，activity为GitUserActivity。目的：尝试https在框架的实现，实现方法并无差别。

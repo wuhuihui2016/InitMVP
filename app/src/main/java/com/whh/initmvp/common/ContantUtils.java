@@ -10,6 +10,7 @@ public class ContantUtils {
 
     public static String APPVERSION_BASE_URL = "http://ios.mobile.che-by.com/";
     public static String WEATHER_BASE_URL = "http://t.weather.sojson.com/";
+    public static String GITHUBSER_BASE_URL = "https://api.github.com/users/";
 
     public static CompositeDisposable compositeDisposable;
 

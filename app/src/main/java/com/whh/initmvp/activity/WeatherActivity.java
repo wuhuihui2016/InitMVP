@@ -1,8 +1,6 @@
 package com.whh.initmvp.activity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.whh.initmvp.R;
@@ -18,7 +16,6 @@ import com.whh.initmvp.view.WeatherView;
 public class WeatherActivity extends BaseActivity{
 
     private TextView showData;
-    private Button requestData;
 
     private WeatherPresenter weatherPresenter = new WeatherPresenter(this);
 
@@ -28,25 +25,18 @@ public class WeatherActivity extends BaseActivity{
         setContentView(R.layout.activity_main);
 
         showData = (TextView) findViewById(R.id.showData);
-        requestData = (Button) findViewById(R.id.requestData);
-        requestData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                weatherPresenter.getWeather(); //开始请求数据
-            }
-        });
 
         weatherPresenter.onCreate(); //启动Presenter,订阅View
+        weatherPresenter.getWeather(); //开始请求数据
         //刷新UI,显示数据
         weatherPresenter.attachView(new WeatherView() {
             @Override
             public void onSuccess(Weather weather) {
-                showData.setText("\n\n\ngetTime:\n" + weather.getTime()
+                showData.setText("getTime:\n" + weather.getTime()
                         + "\n\n\ngetCityInfo:\n" + weather.getCityInfo()
                         + "\n\n\ngetData:\n" + weather.getData()
                 );
 
-                requestData.setVisibility(View.GONE);
             }
 
             @Override

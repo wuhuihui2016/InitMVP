@@ -27,6 +27,7 @@ public class RetrofitHelper {
         this.context = context;
         initRetrofit();
 //        initWeatherRetrofit();
+//        initGitUserRetrofit();
     }
 
     public static RetrofitHelper getInstance(Context context) {
@@ -52,6 +53,20 @@ public class RetrofitHelper {
         Log.i(TAG, ContantUtils.WEATHER_BASE_URL);
         retrofit = new Retrofit.Builder()
                 .baseUrl(ContantUtils.WEATHER_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(
+                        new GsonBuilder().create()))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(MyApp.okHtpClient)
+                .build();
+    }
+
+    /**
+     * GitUser https请求
+     */
+    private void initGitUserRetrofit() {
+        Log.i(TAG, ContantUtils.GITHUBSER_BASE_URL);
+        retrofit = new Retrofit.Builder()
+                .baseUrl(ContantUtils.GITHUBSER_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(
                         new GsonBuilder().create()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
