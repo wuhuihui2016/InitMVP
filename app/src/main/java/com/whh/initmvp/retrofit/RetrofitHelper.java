@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.GsonBuilder;
+import com.whh.initmvp.MyApp;
 import com.whh.initmvp.common.ContantUtils;
 
 import retrofit2.Retrofit;
@@ -40,6 +41,7 @@ public class RetrofitHelper {
                 .addConverterFactory(GsonConverterFactory.create(
                         new GsonBuilder().create()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(MyApp.okHtpClient)
                 .build();
     }
 
@@ -53,6 +55,7 @@ public class RetrofitHelper {
                 .addConverterFactory(GsonConverterFactory.create(
                         new GsonBuilder().create()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(MyApp.okHtpClient)
                 .build();
     }
 

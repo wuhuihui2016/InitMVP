@@ -10,3 +10,4 @@ OkHttp3：Square公司的一款开源的网络请求库。
 Retrofit：Square公司开发的一款针对Android 网络请求的框架（底层默认是基于OkHttp 实现）。
 RxJava2：一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库），RxJava使异步操作变得非常简单。
 
+HttpLoggingInterceptor：日志拦截器，okHttp记录拦截器，用于记录应用中的网络请求的信息。
