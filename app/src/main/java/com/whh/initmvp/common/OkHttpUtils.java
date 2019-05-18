@@ -3,6 +3,10 @@ package com.whh.initmvp.common;
 import android.util.Log;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+import com.whh.initmvp.MyApp;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,24 +15,24 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * Created by wuhuihui on 2019/5/18.
- * OkHttpLogger 日志拦截器
+ * OkHttpUtils 日志拦截器
  */
 
-public class OkHttpLogger {
+public class OkHttpUtils {
 
-    private static final String TAG = "OkHttpLogger";
+    private static final String TAG = "OkHttpUtils";
     public static final long DEFAULT_READ_TIMEOUT_MILLIS = 15 * 1000;
     public static final long DEFAULT_WRITE_TIMEOUT_MILLIS = 20 * 1000;
     public static final long DEFAULT_CONNECT_TIMEOUT_MILLIS = 20 * 1000;
     private static final long HTTP_RESPONSE_DISK_CACHE_MAX_SIZE = 10 * 1024 * 1024;
 
-    private static volatile OkHttpLogger instance;
+    private static volatile OkHttpUtils instance;
     private OkHttpClient okHttpClient;
 
     /**
      * 获取log拦截器，单例模式，仅获取一次，共APP全局使用
      */
-    private OkHttpLogger() {
+    private OkHttpUtils() {
 //      设置HttpLoggingInterceptor
         HttpLoggingInterceptor interceptor =
                 new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
@@ -58,14 +62,18 @@ public class OkHttpLogger {
                 .connectTimeout(DEFAULT_CONNECT_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
                 //FaceBook 网络调试器，可在Chrome调试网络请求，查看SharePreferences,数据库等
                 .addNetworkInterceptor(new StethoInterceptor())
-                .addInterceptor(interceptor).build();
+                .addInterceptor(interceptor)
+                //持久化Cookie，OKHttp管理Cookie
+                //用户登录时保存的cookie，在下次需要用到该用户的cookie放在请求头里
+                .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getInstance())))
+                .build();
     }
 
-    public static OkHttpLogger getInstance() {
+    public static OkHttpUtils getInstance() {
         if (instance == null) {
-            synchronized (OkHttpLogger.class) {
+            synchronized (OkHttpUtils.class) {
                 if (instance == null) {
-                    instance = new OkHttpLogger();
+                    instance = new OkHttpUtils();
                 }
             }
         }
@@ -74,6 +82,7 @@ public class OkHttpLogger {
 
     /**
      * 获取OkHttpClient
+     *
      * @return
      */
     public OkHttpClient getOkHttpClient() {

@@ -13,7 +13,7 @@ RxJava2：一个在 Java VM 上使用可观测的序列来组成异步的、基�
 HttpLoggingInterceptor：日志拦截器，okHttp记录拦截器，用于记录应用中的网络请求的信息。
 
 三个网络请求例子：
-由于三个请求API的base_url都不同，需要初始化不同的retrofit，初始化方法在调用的切换
+由于三个请求API的base_url都不同，需要初始化不同的retrofit，初始化方法在调用时切换
 private RetrofitHelper(Context context) {
         this.context = context;
 //        initRetrofit(); //版本信息
@@ -24,3 +24,18 @@ private RetrofitHelper(Context context) {
 1.版本信息：post请求，retrofit初始化方法initRetrofit，activity为AppVersionActivity。目的：框架的初实现
 2.天气信息：get请求，retrofit初始化方法initWeatherRetrofit，activity为WeatherActivity。目的：熟练框架的使用
 3.gitUser信息：get请求，retrofit初始化方法initGitUserRetrofit，activity为GitUserActivity。目的：尝试https在框架的实现，实现方法并无差别。
+
+EventBus能够简化各组件间的通信，让我们的代码书写变得简单，能有效的分离事件发送方和接收方(也就是解耦的意思)，能避免复杂和容易出错的依赖性和生命周期问题。
+EventBus可以代替Android传统的Intent,Handler,Broadcast或接口函数,在Fragment,Activity,Service线程之间传递数据，执行方法
+特点:代码简洁，是一种发布订阅设计模式(观察者设计模式)。
+https://baike.baidu.com/item/EventBus/20461274
+
+
+
+
+
+
+
+
+
+

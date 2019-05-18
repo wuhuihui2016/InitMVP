@@ -46,4 +46,10 @@ dependencies {
 
     //Cookie持久化管理
     compile 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+
+    //Glide
+    compile 'com.github.bumptech.glide:glide:4.5.0'
+
+    //EventBus
+    compile 'org.greenrobot:eventbus:3.1.1'
 }

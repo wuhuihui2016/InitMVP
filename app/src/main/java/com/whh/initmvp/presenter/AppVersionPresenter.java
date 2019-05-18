@@ -74,8 +74,8 @@ public class AppVersionPresenter implements Presenter {
 
     public void getAppVersion(String currentVersion, String type) {
         Observable<AppVersion> observable = manager.getAppVersion(currentVersion, type);
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+        observable.subscribeOn(Schedulers.io()) //在IO线程进行网络请求
+                .observeOn(AndroidSchedulers.mainThread()) //回到主线程去处理请求结果
                 .subscribe(new Observer<AppVersion>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -104,5 +104,16 @@ public class AppVersionPresenter implements Presenter {
                     }
                 });
     }
+
+    /**
+     * subscribeOn() 指定的是上游发送事件的线程, observeOn() 指定的是下游接收事件的线程.
+     多次指定上游的线程只有第一次指定的有效, 也就是说多次调用subscribeOn() 只有第一次的有效, 其余的会被忽略.
+     多次指定下游的线程是可以的, 也就是说每调用一次observeOn() , 下游的线程就会切换一次.
+
+     作者：Season_zlc
+     链接：https://www.jianshu.com/p/8818b98c44e2
+     来源：简书
+     简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+     */
 
 }

@@ -41,7 +41,7 @@ public class RetrofitHelper {
                 .baseUrl(ContantUtils.APPVERSION_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(
                         new GsonBuilder().create()))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) //实现异步
                 .client(MyApp.okHtpClient)
                 .build();
     }

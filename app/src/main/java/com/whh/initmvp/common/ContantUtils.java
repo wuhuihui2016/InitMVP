@@ -14,15 +14,11 @@ public class ContantUtils {
 
     public static CompositeDisposable compositeDisposable;
 
+    /**
+     * 新建订阅容器，供APP全局使用
+     */
     public static void setCompositeDisposable() {
         compositeDisposable = new CompositeDisposable();
-    }
-
-    /**
-     * 取消所有订阅
-     */
-    public static void compositeDisposableClear() {
-        compositeDisposable.clear();
     }
 
 }
