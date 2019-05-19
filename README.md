@@ -1,5 +1,5 @@
 # InitMVP
-mvp+okhttp3+retrofit2+rxjava2
+一、mvp+okhttp3+retrofit2+rxjava2
 
 利用mvp+okhttp3+retrofit2+rxjava2搭建框架实现网络请求及刷新UI数据。
 
@@ -25,10 +25,16 @@ private RetrofitHelper(Context context) {
 2.天气信息：get请求，retrofit初始化方法initWeatherRetrofit，activity为WeatherActivity。目的：熟练框架的使用
 3.gitUser信息：get请求，retrofit初始化方法initGitUserRetrofit，activity为GitUserActivity。目的：尝试https在框架的实现，实现方法并无差别。
 
-EventBus能够简化各组件间的通信，让我们的代码书写变得简单，能有效的分离事件发送方和接收方(也就是解耦的意思)，能避免复杂和容易出错的依赖性和生命周期问题。
-EventBus可以代替Android传统的Intent,Handler,Broadcast或接口函数,在Fragment,Activity,Service线程之间传递数据，执行方法
-特点:代码简洁，是一种发布订阅设计模式(观察者设计模式)。
-https://baike.baidu.com/item/EventBus/20461274
+====================================================================================================================================
+
+二、EventBus
+EventBus是一种用于Android的事件发布-订阅总线，由GreenRobot开发。
+Gihub地址 :https://github.com/greenrobot/EventBus。
+EventBus能够简化各组件间的通信，代码书写变得简单，能有效的分离事件发送方和接收方(也就是解耦的意思)，能避免复杂和容易出错的依赖性和生命周期问题。
+EventBus可以代替Android传统的Intent，Handler，Broadcast或接口函数，在Fragment、Activity、Service线程之间传递数据，执行方法。
+特点：代码简洁，是一种发布订阅设计模式(观察者设计模式)。
+EventBus整理文章：https://www.jianshu.com/p/5ad5ea7180a2
+
 
 
 

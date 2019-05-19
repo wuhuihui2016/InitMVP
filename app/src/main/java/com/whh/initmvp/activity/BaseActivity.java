@@ -32,6 +32,8 @@ public class BaseActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        //清除所有订阅
         CompositeDisposable compositeDisposable = ContantUtils.compositeDisposable;
         if (compositeDisposable != null) {
             compositeDisposable.clear();
