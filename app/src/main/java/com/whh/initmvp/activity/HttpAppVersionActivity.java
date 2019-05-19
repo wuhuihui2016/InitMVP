@@ -8,56 +8,62 @@ import android.widget.Toast;
 
 import com.whh.initmvp.R;
 import com.whh.initmvp.common.SystemUtils;
-import com.whh.initmvp.model.Weather;
-import com.whh.initmvp.presenter.WeatherPresenter;
-import com.whh.initmvp.view.WeatherView;
+import com.whh.initmvp.model.AppVersion;
+import com.whh.initmvp.presenter.AppVersionPresenter;
+import com.whh.initmvp.view.AppVersionView;
+
+import java.util.List;
 
 /**
  * Created by wuhuihui on 2019/5/16.
- * 加载天气信息
+ * 加载版本信息
  */
 
-public class WeatherActivity extends BaseActivity {
+public class HttpAppVersionActivity extends BaseActivity {
 
     private TextView showData;
 
-    private WeatherPresenter weatherPresenter = new WeatherPresenter(this);
+    private AppVersionPresenter appVersionPresenter = new AppVersionPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView("加载天气信息", R.layout.activity_main);
+        setContentView("加载版本信息", R.layout.activity_main);
 
-        showWeather(); //显示天气信息
+        showAppVersion(); //显示版本信息
 
         initEventBus(); //EventBus事件
 
         initGlide(); //Glide
+
     }
 
-
     /**
-     * 显示天气信息
+     * 显示版本信息
      */
-    private void showWeather() {
+    private void showAppVersion() {
         findViewById(R.id.loadData).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemUtils.isNetworkAvailable(activity)) {
-
+                if(SystemUtils.isNetworkAvailable(activity)) {
                     showData = (TextView) findViewById(R.id.showData);
 
-                    weatherPresenter.onCreate(); //启动Presenter,订阅View
-                    weatherPresenter.getWeather(); //开始请求数据
+                    appVersionPresenter.onCreate(); //启动Presenter,订阅View
+                    appVersionPresenter.getAppVersion("6.0", "android"); //开始请求数据
                     //刷新UI,显示数据
-                    weatherPresenter.attachView(new WeatherView() {
+                    appVersionPresenter.attachView(new AppVersionView() {
                         @Override
-                        public void onSuccess(Weather weather) {
-                            showData.setText("getTime:\n" + weather.getTime()
-                                    + "\n\n\ngetCityInfo:\n" + weather.getCityInfo()
-                                    + "\n\n\ngetData:\n" + weather.getData()
+                        public void onSuccess(AppVersion appVersion) {
+                            showData.setText(appVersion.getLatestVersion()
+                                    + "\n" + appVersion.getSize()
+                                    + "\n" + appVersion.getUrl()
+                                    + "\n\n新版本更新内容：\n"
                             );
 
+                            List<String> list = appVersion.getFunctions();
+                            for (int i = 0; i < list.size(); i++) {
+                                showData.append(list.get(i) + "\n");
+                            }
                         }
 
                         @Override
@@ -65,8 +71,7 @@ public class WeatherActivity extends BaseActivity {
                             showData.setText(error);
                         }
                     });
-                } else
-                    Toast.makeText(getApplicationContext(), "当前网络不可用", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(getApplicationContext(), "当前网络不可用", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -95,10 +100,9 @@ public class WeatherActivity extends BaseActivity {
         });
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        weatherPresenter.onDestory(); //取消view的引用，避免内存泄漏
+        appVersionPresenter.onDestory(); //取消view的引用，避免内存泄漏
     }
 }

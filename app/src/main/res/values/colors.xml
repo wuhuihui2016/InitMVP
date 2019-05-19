@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="app_color">#3300cc</color>
+    <color name="gray">#F5F5F5</color>
+    <color name="darker_gray">@android:color/darker_gray</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="white">@android:color/white</color>
+    <color name="red">@android:color/holo_red_light</color>
+    <color name="black">@android:color/black</color>
+    <color name="blue">#000093</color>
+
+
+    <color name="title">#333333</color>
+    <color name="line">#d0d0d0</color>
+    <color name="bitblack">#4F4F4F</color>
+    <color name="gridline">#8E8E8E</color>
+
+    <color name="day_record">#009393</color>
+    <color name="month_record">#007500</color>
+    <color name="income_record">#D67CDD</color>
+    <color name="notepad_record">#E1E100</color>
+    <color name="remark_bkg">#FFF7E9</color>
+
+    <color name="search_info">#7D7DFF</color>
+
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
 </resources>

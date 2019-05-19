@@ -1,12 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/showData"
+    <LinearLayout
+        android:id="@+id/btn_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp" />
-</ScrollView>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/loadData"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:padding="5dp"
+            android:text="网络加载"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/eventBus"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:padding="5dp"
+            android:text="事件触发"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/glide"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:padding="5dp"
+            android:text="图片加载"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/showData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@android:color/black" />
+    </ScrollView>
+</LinearLayout>
 

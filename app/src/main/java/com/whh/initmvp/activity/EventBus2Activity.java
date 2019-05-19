@@ -14,6 +14,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * Created by wuhuihui on 2019/5/18.
+ * 发送普通事件给EventBusActivity
+ * 接收EventBusActivity发来的粘性事件
  */
 public class EventBus2Activity extends BaseActivity {
 
@@ -22,7 +24,7 @@ public class EventBus2Activity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eventbus);
+        setContentView("粘性事件", R.layout.activity_eventbus);
 
         if (!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this); //注册事件,不可重复注册事件

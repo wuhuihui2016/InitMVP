@@ -25,6 +25,8 @@ private RetrofitHelper(Context context) {
 2.天气信息：get请求，retrofit初始化方法initWeatherRetrofit，activity为WeatherActivity。目的：熟练框架的使用
 3.gitUser信息：get请求，retrofit初始化方法initGitUserRetrofit，activity为GitUserActivity。目的：尝试https在框架的实现，实现方法并无差别。
 
+框架实现整理文章：https://www.jianshu.com/p/3625061c98ad
+
 ====================================================================================================================================
 
 二、EventBus
@@ -33,7 +35,17 @@ Gihub地址 :https://github.com/greenrobot/EventBus。
 EventBus能够简化各组件间的通信，代码书写变得简单，能有效的分离事件发送方和接收方(也就是解耦的意思)，能避免复杂和容易出错的依赖性和生命周期问题。
 EventBus可以代替Android传统的Intent，Handler，Broadcast或接口函数，在Fragment、Activity、Service线程之间传递数据，执行方法。
 特点：代码简洁，是一种发布订阅设计模式(观察者设计模式)。
+
 EventBus整理文章：https://www.jianshu.com/p/5ad5ea7180a2
+
+====================================================================================================================================
+
+三、Glide
+图片加载框架。Glide和Picasso 有90%相似度，而Glide在Picasso基础上进行的二次开发，可以其优势显而易见。UniversalImageLoader已停止服务。
+使用Glide在大多数情况下我们不需要指定图片大小，因为Glide会自动根据ImageView的大小来决定图片的大小，以此保证图片不会占用过多的内存从而引发OOM。
+Glide可以加载GIF图片，Picasso是不支持这个功能的。使用Glide加载GIF图不需要编写额外代码，Glide内部会自动判断图片格式。同时可以加载本地视频。
+
+====================================================================================================================================
 
 
 

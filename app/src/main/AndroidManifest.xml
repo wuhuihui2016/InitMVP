@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--用于硬盘缓存和读取-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApp"
@@ -14,16 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--版本信息-->
-        <!--<activity android:name=".activity.AppVersionActivity">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+        <!--版本信息 start-->
+        <activity android:name=".activity.HttpAppVersionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--版本信息 end-->
+        <!--=================================================-->
 
-        <!--天气信息-->
+        <!--天气信息 start-->
         <!--<activity android:name=".activity.WeatherActivity">-->
         <!--<intent-filter>-->
         <!--<action android:name="android.intent.action.MAIN" />-->
@@ -31,8 +36,10 @@
         <!--<category android:name="android.intent.category.LAUNCHER" />-->
         <!--</intent-filter>-->
         <!--</activity>-->
+        <!--天气信息 end-->
+        <!--=================================================-->
 
-        <!--GitUser信息-->
+        <!--GitUser信息 start-->
         <!--<activity android:name=".activity.GitUserActivity">-->
         <!--<intent-filter>-->
         <!--<action android:name="android.intent.action.MAIN" />-->
@@ -40,16 +47,21 @@
         <!--<category android:name="android.intent.category.LAUNCHER" />-->
         <!--</intent-filter>-->
         <!--</activity>-->
+        <!--GitUser信息 end-->
+        <!--=================================================-->
+
 
         <!--EventBus-->
-        <activity android:name=".activity.EventBusActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".activity.EventBusActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.EventBus2Activity"
+            android:launchMode="singleTask" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.EventBus2Activity"/>
+        <!--Glide-->
+        <activity android:name=".activity.GlideActivity" />
+
     </application>
 
 </manifest>

@@ -21,8 +21,9 @@
         android:id="@+id/send"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="发送事件"
+        android:layout_margin="10dp"
         android:background="@android:color/holo_red_dark"
+        android:text="发送事件"
         android:textColor="@android:color/white" />
 </LinearLayout>
 

@@ -6,4 +6,5 @@ V1.0
 (190518)尝试HTTPS网络请求，与HTTP并无区别，okHttp已封装HTTPS方法
 (190518)PersistentCookieJar持久化Cookie、RxJava2CallAdapterFactory实现异步、增加依赖库Glide、EventBus
 (190519)EventBus事件的发送接收及粘性事件
+(190519)Glide加载图片；启动页优化；项目风格统一；BaseActivity优化
 
