@@ -12,6 +12,8 @@ import com.whh.initmvp.model.GitUser;
 import com.whh.initmvp.presenter.GitUserPresenter;
 import com.whh.initmvp.view.GitUserView;
 
+import static com.whh.initmvp.R.id.initRecyclerView;
+
 /**
  * Created by wuhuihui on 2019/5/16.
  * https加载githubUser信息
@@ -33,6 +35,8 @@ public class GitUserActivity extends BaseActivity {
         initEventBus(); //EventBus事件
 
         initGlide(); //Glide
+
+        initRecyclerView(); //initRecyclerView
 
 
     }
@@ -87,6 +91,18 @@ public class GitUserActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(activity, GlideActivity.class));
+            }
+        });
+    }
+
+    /**
+     * Glide
+     */
+    private void initRecyclerView() {
+        findViewById(initRecyclerView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(activity, RecyclerViewActivity.class));
             }
         });
     }

@@ -1,4 +1,8 @@
 # InitMVP
+github：https://github.com/wuhuihui2016/InitMVP.git
+
+====================================================================================================================================
+
 一、mvp+okhttp3+retrofit2+rxjava2
 
 利用mvp+okhttp3+retrofit2+rxjava2搭建框架实现网络请求及刷新UI数据。
@@ -47,8 +51,23 @@ Glide可以加载GIF图片，Picasso是不支持这个功能的。使用Glide加
 
 ====================================================================================================================================
 
+四、RecyclerView简单/复杂item加载
+1.简单加载：ListAdapter extents BaseQuickAdapter<EventMessage, BaseViewHolder>
+构造方法、convert()
+2.复杂加载：ListAdapter2 extents RecyclerView.Adapter<RecyclerView.ViewHolder>
+onCreateViewHolder()、onBindViewHolder()、getItemCount()、getItemViewType()
 
+====================================================================================================================================
 
+五、IntentService的使用
+NetworkReceiver
+IntentService会创建独立的worker线程来处理所有的Intent请求；
+会创建独立的worker线程来处理onHandleIntent()方法实现的代码，无需处理多线程的问题；
+所有请求处理完成后，IntentService会自动停止，无需调用stopSelf()方法停止Service；
+为Service的onBind()提供默认实现，返回null；
+为Service的onStartCommand提供默认实现，将请求Intent添加到队列中
+
+====================================================================================================================================
 
 
 

@@ -25,9 +25,9 @@ public class RetrofitHelper {
 
     private RetrofitHelper(Context context) {
         this.context = context;
-        initRetrofit();
+//        initRetrofit();
 //        initWeatherRetrofit();
-//        initGitUserRetrofit();
+        initGitUserRetrofit();
     }
 
     public static RetrofitHelper getInstance(Context context) {
