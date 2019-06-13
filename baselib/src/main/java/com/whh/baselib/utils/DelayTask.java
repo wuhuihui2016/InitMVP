@@ -1,4 +1,4 @@
-package com.whh.initmvp.common;
+package com.whh.baselib.utils;
 
 /**
  * Created by wuhuihui on 2017/5/22.

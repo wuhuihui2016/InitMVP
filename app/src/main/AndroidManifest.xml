@@ -55,7 +55,7 @@
             android:name=".activity.EventBusActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activity.EventBus2Activity"
+            android:name="com.whh.eventbus3.activity.EventBus2Activity"
             android:launchMode="singleTask" />
 
         <!--Glide-->

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.whh.initmvp.common.ContantUtils;
+import com.whh.initmvp.utils.ContantUtils;
 import com.whh.initmvp.model.AppVersion;
 import com.whh.initmvp.manager.DataManager;
 import com.whh.initmvp.view.AppVersionView;

@@ -1,4 +1,4 @@
-package com.whh.initmvp.common;
+package com.whh.baselib.utils;
 
 import android.app.Activity;
 import android.app.ActivityManager;

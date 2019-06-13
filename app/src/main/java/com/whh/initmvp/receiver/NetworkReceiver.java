@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
-import com.whh.initmvp.common.SystemUtils;
+import com.whh.baselib.utils.SystemUtils;
 
 /**
  * IntentService的使用

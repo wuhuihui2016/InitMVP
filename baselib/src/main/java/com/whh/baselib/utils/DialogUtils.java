@@ -1,4 +1,4 @@
-package com.whh.initmvp.common;
+package com.whh.baselib.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,8 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.whh.initmvp.R;
+import com.whh.baselib.R;
 
 /**
  * 自定义美观的AlertDialog

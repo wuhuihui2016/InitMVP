@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.google.gson.GsonBuilder;
 import com.whh.initmvp.MyApp;
-import com.whh.initmvp.common.ContantUtils;
+import com.whh.initmvp.utils.ContantUtils;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

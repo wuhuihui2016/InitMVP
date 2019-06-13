@@ -4,8 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.stetho.Stetho;
-import com.whh.initmvp.common.ContantUtils;
-import com.whh.initmvp.common.OkHttpUtils;
+import com.whh.initmvp.utils.ContantUtils;
+import com.whh.initmvp.utils.OkHttpUtils;
 
 import okhttp3.OkHttpClient;
 

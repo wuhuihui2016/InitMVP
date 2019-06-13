@@ -5,6 +5,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.whh.baselib.activity.BaseActivity;
 import com.whh.initmvp.R;
 import com.whh.initmvp.adapter.ListAdapter;
 import com.whh.initmvp.adapter.ListAdapter2;

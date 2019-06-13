@@ -1,16 +1,18 @@
-package com.whh.initmvp.activity;
+package com.whh.eventbus3.activity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.whh.initmvp.R;
-import com.whh.initmvp.model.EventMessage;
+import com.whh.baselib.activity.BaseActivity;
+import com.whh.eventbus3.R;
+import com.whh.eventbus3.model.EventMessage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
 
 /**
  * Created by wuhuihui on 2019/5/18.

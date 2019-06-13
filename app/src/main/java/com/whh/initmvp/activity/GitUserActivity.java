@@ -6,11 +6,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.whh.baselib.activity.BaseActivity;
+import com.whh.baselib.utils.SystemUtils;
 import com.whh.initmvp.R;
-import com.whh.initmvp.common.SystemUtils;
 import com.whh.initmvp.model.GitUser;
 import com.whh.initmvp.presenter.GitUserPresenter;
+import com.whh.initmvp.utils.ContantUtils;
 import com.whh.initmvp.view.GitUserView;
+
+import io.reactivex.disposables.CompositeDisposable;
 
 import static com.whh.initmvp.R.id.initRecyclerView;
 
@@ -37,7 +41,6 @@ public class GitUserActivity extends BaseActivity {
         initGlide(); //Glide
 
         initRecyclerView(); //initRecyclerView
-
 
     }
 
@@ -112,5 +115,11 @@ public class GitUserActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         gitUserPresenter.onDestory(); //取消view的引用，避免内存泄漏
+
+        //清除所有订阅
+        CompositeDisposable compositeDisposable = ContantUtils.compositeDisposable;
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
     }
 }

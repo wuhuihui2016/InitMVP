@@ -1,4 +1,4 @@
-package com.whh.initmvp.activity;
+package com.whh.baselib.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,11 +16,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.whh.initmvp.R;
-import com.whh.initmvp.common.ContantUtils;
-import com.whh.initmvp.common.SystemUtils;
-
-import io.reactivex.disposables.CompositeDisposable;
+import com.whh.baselib.R;
+import com.whh.baselib.utils.SystemUtils;
 
 /**
  * Created by wuhuihui on 2019/5/17.
@@ -164,10 +161,5 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         super.onDestroy();
         Log.i(TAG, "lifecycle---" + TAG + " onDestroy");
 
-        //清除所有订阅
-        CompositeDisposable compositeDisposable = ContantUtils.compositeDisposable;
-        if (compositeDisposable != null) {
-            compositeDisposable.clear();
-        }
     }
 }

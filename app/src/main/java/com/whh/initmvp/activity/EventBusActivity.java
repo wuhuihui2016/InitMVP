@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.whh.baselib.activity.BaseActivity;
+import com.whh.eventbus3.activity.EventBus2Activity;
 import com.whh.initmvp.R;
 import com.whh.initmvp.model.EventMessage;
 

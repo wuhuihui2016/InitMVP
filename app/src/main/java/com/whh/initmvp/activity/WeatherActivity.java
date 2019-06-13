@@ -6,15 +6,16 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.whh.baselib.activity.BaseActivity;
+import com.whh.baselib.utils.SystemUtils;
 import com.whh.initmvp.R;
-import com.whh.initmvp.common.SystemUtils;
 import com.whh.initmvp.model.Weather;
 import com.whh.initmvp.presenter.WeatherPresenter;
 import com.whh.initmvp.view.WeatherView;
 
 /**
  * Created by wuhuihui on 2019/5/16.
- * 加载天气信息
+ * 加载天气信息 因为免费地多次测试，导致IP被封，天气接口访问失败
  */
 
 public class WeatherActivity extends BaseActivity {

@@ -1,9 +1,4 @@
 <resources>
 
-    <dimen name="titletextSize">22sp</dimen>
-    <dimen name="bigertextSize">18sp</dimen>
-    <dimen name="bigtextSize">15sp</dimen>
-    <dimen name="smalltextSize">12sp</dimen>
-    <dimen name="littletextSize">10sp</dimen>
 
 </resources>

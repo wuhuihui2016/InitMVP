@@ -6,8 +6,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.whh.baselib.activity.BaseActivity;
+import com.whh.baselib.utils.SystemUtils;
 import com.whh.initmvp.R;
-import com.whh.initmvp.common.SystemUtils;
 import com.whh.initmvp.model.AppVersion;
 import com.whh.initmvp.presenter.AppVersionPresenter;
 import com.whh.initmvp.view.AppVersionView;

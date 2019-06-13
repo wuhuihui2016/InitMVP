@@ -1,4 +1,4 @@
-package com.whh.initmvp.common;
+package com.whh.initmvp.utils;
 
 import android.util.Log;
 

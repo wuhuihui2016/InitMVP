@@ -9,11 +9,12 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.whh.baselib.activity.BaseActivity;
 import com.whh.initmvp.R;
 
 /**
  * Created by wuhuihui on 2019/5/17.
- * Glide图片加载，
+ * Glide图片加载
  * 参考文章：https://www.jianshu.com/p/7ce7b02988a4
  * https://www.jianshu.com/p/791ee473a89b
  * 可以显示gif图，也能显示视频，但只是本地视频
@@ -31,7 +32,7 @@ public class GlideActivity extends BaseActivity {
         setContentView("Glide加载图片", R.layout.activity_glide);
 
         images_layout = (LinearLayout) findViewById(R.id.images_layout);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             loadImage();
         }
 
@@ -46,7 +47,7 @@ public class GlideActivity extends BaseActivity {
                 .placeholder(R.drawable.picloading) //加载过程中显示的图片
                 .error(R.drawable.picerror) //加载失败后显示的图片
                 .thumbnail(0.5f) //设置缩略图：加载原图的0.5倍
-                .override(120, 120) //裁剪图片的大小，单位px
+                .override(400, 240) //裁剪图片的大小，单位px
                 .skipMemoryCache(true) //支持内存缓存（默认打开）
 
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
