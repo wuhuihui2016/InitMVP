@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/InitMVP.iml" filepath="$PROJECT_DIR$/InitMVP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arouter/arouter.iml" filepath="$PROJECT_DIR$/arouter/arouter.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselib/baselib.iml" filepath="$PROJECT_DIR$/baselib/baselib.iml" />
       <module fileurl="file://$PROJECT_DIR$/eventbus3/eventbus3.iml" filepath="$PROJECT_DIR$/eventbus3/eventbus3.iml" />
     </modules>

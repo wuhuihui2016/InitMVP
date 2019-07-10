@@ -61,6 +61,17 @@
             android:text="initRecyclerView"
             android:textColor="@android:color/black" />
 
+        <Button
+            android:id="@+id/arouter"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:padding="5dp"
+            android:text="ARouter"
+            android:textColor="@android:color/black" />
+
     </LinearLayout>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"

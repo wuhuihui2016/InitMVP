@@ -22,8 +22,7 @@ import static com.whh.initmvp.R.id.initRecyclerView;
  * Created by wuhuihui on 2019/5/16.
  * https加载githubUser信息
  */
-
-public class GitUserActivity extends BaseActivity {
+public class MainActivity extends BaseActivity {
 
     private TextView showData;
 
@@ -41,6 +40,8 @@ public class GitUserActivity extends BaseActivity {
         initGlide(); //Glide
 
         initRecyclerView(); //initRecyclerView
+
+//        initARouter(); //初始化ARouter
 
     }
 
@@ -99,7 +100,7 @@ public class GitUserActivity extends BaseActivity {
     }
 
     /**
-     * Glide
+     * RecyclerView
      */
     private void initRecyclerView() {
         findViewById(initRecyclerView).setOnClickListener(new View.OnClickListener() {
@@ -109,6 +110,20 @@ public class GitUserActivity extends BaseActivity {
             }
         });
     }
+
+    /**
+     * ARouter
+     */
+//    private void initARouter() {
+//        ARouter.getInstance().inject(this); //注入到当前页面
+//
+//        findViewById(R.id.arouter).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ARouter.getInstance().build("/arouter/ARouterResultActivity").withString("key", "ARouter20190708 14:46").navigation();
+//            }
+//        });
+//    }
 
 
     @Override

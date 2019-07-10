@@ -51,4 +51,7 @@ dependencies {
 
     //eventbus3
     compile project(':eventbus3')
+
+//    //arouter
+//    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 }

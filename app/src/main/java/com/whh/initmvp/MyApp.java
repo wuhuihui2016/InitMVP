@@ -19,6 +19,7 @@ public class MyApp extends Application {
 
     public static OkHttpClient okHtpClient;
 
+    private boolean isDebugARouter = true; //ARouter调试开关
 
     @Override
     public void onCreate() {
@@ -32,6 +33,14 @@ public class MyApp extends Application {
 
         //初始化FaceBook调试器,可在Chrome调试网络请求,查看SharePreferences,数据库等
         Stetho.initializeWithDefaults(this);
+
+        //初始化ARouter
+//        if(isDebugARouter) {
+//            ARouter.openLog(); //开启日志
+//            ARouter.openDebug(); //开启调试模式
+//        }
+//        ARouter.init(this);
+
     }
 
     public static Context getInstance() {
