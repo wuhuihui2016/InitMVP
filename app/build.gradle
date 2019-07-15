@@ -1,4 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco' //加载代码覆盖库jacoco
+
+jacoco {
+    toolVersion = "0.7.9" //代码覆盖库jacoco版本号
+}
 
 android {
     compileSdkVersion 25
@@ -13,7 +18,13 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            testCoverageEnabled = true //实现代码覆盖率
+            minifyEnabled false //获取代码覆盖率需要设为false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled = true //实现代码覆盖率
+            minifyEnabled false //获取代码覆盖率需要设为false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -54,4 +65,49 @@ dependencies {
 
 //    //arouter
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+
+    //代码覆盖率jacoco
+//    compile 'org.jacoco:org.jacoco.core:0.7.9'
+
+
 }
+
+//代码覆盖率相关配置 start
+def coverageSourceDirs = [
+        '../app/src/main/java'
+]
+
+task jacocoTestReport(type: JacocoReport) {
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    //build\intermediates\javac\debug\compileDebugJavaWithJavac\classes\com\irisking\gacloud\api
+    classDirectories = fileTree(
+            //检测覆盖率的class所在目录(以项目class所在目录为准)
+            dir: './build/intermediates/classes/debug', //gradle2.3 class所在目录
+            //gradle3.2 class所在目录 dir: './build/intermediates/javac/debug/compileDebugJavaWithJavac/classes',
+            //排除以上目录中不检测的文件列表
+            excludes: ['**/R*.class',
+                       '**/*$InjectAdapter.class',
+                       '**/*$ModuleAdapter.class',
+                       '**/*$ViewInjector*.class'
+            ]
+    )
+
+    sourceDirectories = files(coverageSourceDirs) //设置需要检测覆盖率的目录
+    executionData = files("$buildDir/outputs/code-coverage/connected/initmvp_coverage.ec") //存储APP运行时产生报告的目录
+
+//    doFirst {
+//        new File("$buildDir/intermediates/classes/").eachFileRecurse { file ->
+//            if (file.name.contains('$$')) {
+//                file.renameTo(file.path.replace('$$', '$'))
+//            }
+//        }
+//    }
+}
+//代码覆盖率相关配置 end

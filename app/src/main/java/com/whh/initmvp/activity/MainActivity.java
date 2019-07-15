@@ -2,6 +2,7 @@ package com.whh.initmvp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +55,8 @@ public class MainActivity extends BaseActivity {
             public void onClick(View v) {
                 if (SystemUtils.isNetworkAvailable(activity)) {
                     showData = (TextView) findViewById(R.id.showData);
+//                    showData.setMovementMethod(ScrollingMovementMethod.getInstance()); //设置可滑动
+                    showData.setMovementMethod(LinkMovementMethod.getInstance()); //设置链接
 
                     gitUserPresenter.onCreate(); //启动Presenter,订阅View
                     gitUserPresenter.getGitUser(); //开始请求数据

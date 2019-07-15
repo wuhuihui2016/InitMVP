@@ -74,16 +74,15 @@
 
     </LinearLayout>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:id="@+id/showData"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/showData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textColor="@android:color/black" />
-    </ScrollView>
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:autoLink="all"
+        android:background="@color/white"
+        android:padding="@dimen/dp_10"
+        android:textIsSelectable="true"
+        android:textColor="@android:color/black" />
 </LinearLayout>
 

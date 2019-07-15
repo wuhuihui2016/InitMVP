@@ -1,9 +1,14 @@
 package com.whh.baselib.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,7 +22,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.whh.baselib.R;
+import com.whh.baselib.utils.FileUtil;
 import com.whh.baselib.utils.SystemUtils;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Created by wuhuihui on 2019/5/17.
@@ -29,6 +39,8 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     protected Context context;
     protected String TAG;
     protected FrameLayout content_layout;
+    
+    public static String DEFAULT_COVERAGE_FILE_PATH = Environment.getExternalStorageDirectory()+"/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +65,51 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 
         Log.i(TAG, TAG + " is onCreated!");
 
+        requestPermission(
+                new String[]{
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                }
+        );
+
+    }
+
+    private final int PERMISSION_REQUEST_CODE = 2000;
+    @SuppressLint("WrongConstant")
+    private void requestPermission(String[] permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int resultCode = 0;
+            for (String str : permissions) {
+                resultCode = checkSelfPermission(str);
+                if (resultCode != 0) {
+                    if (resultCode == PackageManager.PERMISSION_DENIED) {
+                        requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+                        break;
+                    }
+                }
+            }
+        }
+        Log.i("wuhuihui", "BaseActivity.java BaseActivity requestPermission :");
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 权限通过
+            } else {
+                // 权限拒绝
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[0])) {
+                    // 禁止后不再询问了！
+                } else {
+                    // 用户此次选择了禁止权限
+                }
+            }
+            return;
+        }
+        Log.i("wuhuihui", "BaseActivity.java BaseActivity onRequestPermissionsResult :");
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        FileUtil.createFile(DEFAULT_COVERAGE_FILE_PATH, "initMVp_coverage.ec");
     }
 
     /**
@@ -159,7 +216,37 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        generateCoverageFile();
         Log.i(TAG, "lifecycle---" + TAG + " onDestroy");
 
     }
+
+    /**
+     * 生成executionData
+     */
+    public void generateCoverageFile() {
+
+        OutputStream out = null;
+
+        try {
+            out = new FileOutputStream(DEFAULT_COVERAGE_FILE_PATH + "/initmvp_coverage.ec", false);
+            Object agent = Class.forName("org.jacoco.agent.rt.RT").getMethod("getAgent").invoke(null);
+            // 这里之下就统计不到了
+            out.write((byte[]) agent.getClass().getMethod("getExecutionData", boolean.class).invoke(agent, false));
+
+            Log.i("wuhuihui", "BaseActivity.java BaseActivity generateCoverageFile write success");
+        } catch (Exception e) {
+            Log.i("wuhuihui", "BaseActivity.java BaseActivity generateCoverageFile Exception:" + e.toString());
+
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }
